@@ -57,7 +57,10 @@ class Tournament():
 
         for player in self.players:
             # print(f'Player: {player.id}|{player} Reputation: {player.reputation}')
-            reps = [x+y for (x,y) in zip(reps, player.reputation)]
+            if player == 'Liar':
+                reps = [x+y for (x,y) in zip(reps, player.realreputation)]
+            else:
+                reps = [x+y for (x,y) in zip(reps, player.reputation)]
         reps = [rep/self.numplayers for rep in reps]
         return reps
     
