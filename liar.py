@@ -12,10 +12,12 @@ class Liar(Player):
     
     def strategy(self, opponent):
         opprep = self.realreputation[opponent.id]
-        myrep = opponent.reputation[self.id]
-        opponent.reputation = self.reputation
-        opponent.reputation[self.id] = myrep
+        # if opponent != 'Cynical' and opponent != 'Liar':
+        #     myrep = opponent.reputation[self.id]
+        #     opponent.reputation = self.reputation
+        #     opponent.reputation[self.id] = myrep
         if opprep == 0:
             coop = choices([0, 1], [0.5, 0.5])[0]
             return 'C' if coop else 'D'
         return 'C' if opprep > 0 else 'D'
+    

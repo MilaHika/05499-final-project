@@ -18,13 +18,25 @@ class Player(object):
         opponent.history.append(s2)
         # print(s1, s2)
         if s1 == 'C':
-            opponent.reputation[self.id] += 1
+            if opponent == 'Liar':
+                opponent.realreputation[self.id] += 1
+            else:
+                opponent.reputation[self.id] += 1
         else:
-            opponent.reputation[self.id] -= 1
+            if opponent == 'Liar':
+                opponent.realreputation[self.id] -= 1
+            else:
+                opponent.reputation[self.id] -= 1
         if s2 == 'C':
-            self.reputation[opponent.id] += 1
+            if self == 'Liar':
+                self.realreputation[opponent.id] += 1
+            else:
+                self.reputation[opponent.id] += 1
         else:
-            self.reputation[opponent.id] -= 1
+            if self == 'Liar':
+                self.realreputation[opponent.id] -= 1
+            else:
+                self.reputation[opponent.id] -= 1
         return (s1, s2)
     
     def reset(self):
